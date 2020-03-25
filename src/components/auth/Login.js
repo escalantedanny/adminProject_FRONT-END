@@ -21,7 +21,6 @@ const Login = (props) => {
             mostrarAlerta(mensaje.msg , mensaje.categoria);
             return;
         }
-        // eslint-disable-next-line
     }, [mensaje, autenticado, props.history]);
 
     const [usuario, guardarUsuario] = useState({
