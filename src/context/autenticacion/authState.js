@@ -105,7 +105,16 @@ const AuthState = props => {
                 type: CERRAR_SESSION
             })
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data.msg);
+            const alerta = {
+                msg: error.response.data.msg,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: LOGIN_ERROR,
+                payload: alerta
+            })
         }
     }
 

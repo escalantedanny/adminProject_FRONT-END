@@ -9,6 +9,7 @@ import {
     AGREGAR_TAREA,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
+    TAREA_ERROR,
     TAREA_ACTUAL,
     ACTUALIZAR_TAREA
 } from '../../types';
@@ -19,6 +20,7 @@ const TareaState = props => {
         tareasProyecto: [],
         errorTarea: false,
         tareaSeleccionada: null,
+        mensaje: null
     }
 
     // crear dispatch y state 
@@ -35,7 +37,14 @@ const TareaState = props => {
                 payload: respuesta.data.tareas
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error al obtener las tareas",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
@@ -50,7 +59,14 @@ const TareaState = props => {
                 payload: tarea
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error",
+                categoria: "alerta-error al agregar la tarea"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
@@ -69,7 +85,14 @@ const TareaState = props => {
                 payload: id
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error al eliminar la tarea",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
@@ -82,7 +105,14 @@ const TareaState = props => {
                 payload: resultado.data.tarea
             });
         } catch (error) {
-            console.log(error)
+            const alerta = {
+                msg: "Hubo un error al actualizar la tarea",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
