@@ -23,7 +23,6 @@ const ListadoProyectos = () => {
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
         obtenerProyectos();
-        // eslint-disable-next-line
     }, [mensaje]); // se pasa mensaje como dependencia para que quede escuchando si existe o no mensaje
 
     // revisar si proyectos tiene contenido
