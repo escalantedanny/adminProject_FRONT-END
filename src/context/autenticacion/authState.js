@@ -77,17 +77,20 @@ const AuthState = props => {
     const iniciarSession = async datos => {
         try {
             const respuesta = await clienteAxios.post('/api/auth', datos);
+            //console.log(respuesta);
+            
             dispatch({
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
             });
             usuarioAutenticado();
         } catch (error) {
-
+            console.log(error.response.data.msg);
             const alerta = {
-                msg : error.response.data.msg,
-                categoria: 'alerta-error',
+                msg: error.response.data.msg,
+                categoria: 'alerta-error'
             }
+
             dispatch({
                 type: LOGIN_ERROR,
                 payload: alerta

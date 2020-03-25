@@ -28,7 +28,7 @@ const NuevaCuenta = (props) => {
             return;
         }
 
-
+        // eslint-disable-next-line
     }, [mensaje, autenticado, props.history]);
 
     const [usuario, guardarUsuario] = useState({

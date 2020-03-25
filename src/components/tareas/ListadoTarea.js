@@ -24,7 +24,7 @@ const ListadoTarea = () => {
     const EliminarProyectoSeleccionado = () => {
 
         if (window.confirm(`Estas Seguro de eliminar ${proyectoActual.nombre}?`)) 
-            eliminaUnProyecto(proyectoActual.id); 
+            eliminaUnProyecto(proyectoActual._id); 
 
     }
     return ( 
@@ -38,7 +38,7 @@ const ListadoTarea = () => {
                     <TransitionGroup>   
                         {
                             tareasProyecto.map(tarea => (
-                                <CSSTransition key={tarea.id} timeout={200} classNames="tarea"><Tarea tarea={tarea} /></CSSTransition>
+                                <CSSTransition key={tarea._id} timeout={200} classNames="tarea"><Tarea tarea={tarea} /></CSSTransition>
                             ))
                         }
                     </TransitionGroup> 

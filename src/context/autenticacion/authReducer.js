@@ -38,6 +38,7 @@ export default (state, action) => {
                 autenticado: false,
                 cargando: false
             }
+        default: 
             return state;
 
     }
