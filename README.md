@@ -1,4 +1,4 @@
-Look Dem: <a href="https://ticketsoft.descalante.com/" target="_blank">Look Demo this software</a>
+Look Demo: <a href="https://ticketsoft.descalante.com/" target="_blank">Look Demo this software</a>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
