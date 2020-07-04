@@ -26,6 +26,7 @@ const ListadoTarea = () => {
         if(mensaje){
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
+        // eslint-disable-next-line
     }, [mensaje]); 
 
     // si no se a seleccionado ningun proyecto

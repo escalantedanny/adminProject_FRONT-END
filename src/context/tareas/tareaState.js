@@ -30,7 +30,7 @@ const TareaState = props => {
     const obtenerTareas = async proyecto => {
         
         try {
-            const respuesta = await TareaAxios.get('/api/tareas', { params: {proyecto}});
+            const respuesta = await TareaAxios.get('/api/tikets/tareas', { params: {proyecto}});
             
             dispatch({
                 type: TAREAS_PROYECTO,
@@ -52,7 +52,7 @@ const TareaState = props => {
     const agregarTarea = async tarea => {
         // tarea.id = uuid.v4(); se utiliza para agregar ID a los registros de manera automatica
         try {
-            await TareaAxios.post('/api/tareas', tarea);
+            await TareaAxios.post('/api/tikets/tareas', tarea);
             
             dispatch({
                 type: AGREGAR_TAREA,
@@ -79,7 +79,7 @@ const TareaState = props => {
     
     const eliminarTarea = async (id, proyecto) => {
         try {
-            await TareaAxios.delete(`/api/tareas/${id}`, { params: { proyecto }});
+            await TareaAxios.delete(`/api/tikets/tareas/${id}`, { params: { proyecto }});
             dispatch({
                 type: ELIMINAR_TAREA,
                 payload: id
@@ -98,7 +98,7 @@ const TareaState = props => {
 
     const actualizarTarea = async tarea => {
         try {
-            const resultado = await TareaAxios.put(`/api/tareas/${tarea._id}`, tarea);
+            const resultado = await TareaAxios.put(`/api/tikets/tareas/${tarea._id}`, tarea);
             
             dispatch({
                 type: ACTUALIZAR_TAREA,
