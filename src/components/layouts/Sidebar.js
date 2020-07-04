@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 import NuevoProyecto from '../proyectos/NuevoProyecto';
 import ListadoProyectos from '../proyectos/ListadoProyectos';
 
+
 const Sidebar = () => {
     return (
         <aside>
             <Link to={'/proyectos'}>
-                <h1>TICKET <span>soft</span></h1>
+                <h1>Ticket <span>soft</span></h1>
             </Link>
             <div><hr></hr></div>
             
@@ -15,7 +16,9 @@ const Sidebar = () => {
 
             <div className="proyectos">
             <Link to={'/proyectos'}>
-                    <h1>Listado de Aplicaciones</h1>
+                    <h3 align="center">
+                        <u>Listado de Aplicaciones</u>
+                    </h3>
             </Link>
                 <ListadoProyectos/>
             </div>

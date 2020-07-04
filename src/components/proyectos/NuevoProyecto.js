@@ -7,7 +7,7 @@ const NuevoProyecto = () => {
     const proyectosContext = useContext(proyectoContext);
 
     //importar formulario del context
-    const { formulario, errorformulario, mostrarFormulario, agregarProyecto, mostrarError } = proyectosContext;
+    const { formulario, errorformulario, mostrarFormulario, esconderFormulario, agregarProyecto, mostrarError } = proyectosContext;
 
     const [proyecto, guardarProyecto] = useState({
         nombre : ''
@@ -25,6 +25,10 @@ const NuevoProyecto = () => {
  
     const crearProyecto = () => {
         mostrarFormulario();
+    }
+
+    const esconder = () => {
+        esconderFormulario();
     }
 
     // Cuando el usuario envia el proyecto
@@ -51,9 +55,13 @@ const NuevoProyecto = () => {
         <Fragment>
             <button 
             value="button"
-            className="btn btn-block btn-primario"
+            className="btn btn-primario"
             onClick={crearProyecto}
-            >Nuevo Proyecto</button>
+            onDoubleClick={esconder}
+            title="Agrega un Proyecto Nuevo"
+            ><span className="material-icons">
+            gamepad
+            </span> &nbsp;<span>Nuevo Proyecto</span></button>
 
             {   formulario ? 
                     (

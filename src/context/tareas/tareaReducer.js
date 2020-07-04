@@ -3,6 +3,7 @@ import {
     AGREGAR_TAREA,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
+    TAREA_ERROR,
     TAREA_ACTUAL,
     ACTUALIZAR_TAREA
 } from '../../types';
@@ -45,7 +46,11 @@ export default (state, action) => {
                 ...state,
                 tareaSeleccionada: action.payload
             }
-
+        case TAREA_ERROR:
+            return {
+                ...state,
+                mensaje: action.payload
+            }
         default: 
             return state;
 

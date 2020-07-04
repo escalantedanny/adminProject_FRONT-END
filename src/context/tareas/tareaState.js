@@ -9,6 +9,7 @@ import {
     AGREGAR_TAREA,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
+    TAREA_ERROR,
     TAREA_ACTUAL,
     ACTUALIZAR_TAREA
 } from '../../types';
@@ -19,6 +20,7 @@ const TareaState = props => {
         tareasProyecto: [],
         errorTarea: false,
         tareaSeleccionada: null,
+        mensaje: null
     }
 
     // crear dispatch y state 
@@ -28,14 +30,21 @@ const TareaState = props => {
     const obtenerTareas = async proyecto => {
         
         try {
-            const respuesta = await TareaAxios.get('/api/tareas', { params: {proyecto}});
+            const respuesta = await TareaAxios.get('/api/tikets/tareas', { params: {proyecto}});
             
             dispatch({
                 type: TAREAS_PROYECTO,
                 payload: respuesta.data.tareas
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error al obtener las tareas",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
@@ -43,14 +52,21 @@ const TareaState = props => {
     const agregarTarea = async tarea => {
         // tarea.id = uuid.v4(); se utiliza para agregar ID a los registros de manera automatica
         try {
-            await TareaAxios.post('/api/tareas', tarea);
+            await TareaAxios.post('/api/tikets/tareas', tarea);
             
             dispatch({
                 type: AGREGAR_TAREA,
                 payload: tarea
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error",
+                categoria: "alerta-error al agregar la tarea"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
@@ -63,26 +79,40 @@ const TareaState = props => {
     
     const eliminarTarea = async (id, proyecto) => {
         try {
-            await TareaAxios.delete(`/api/tareas/${id}`, { params: { proyecto }});
+            await TareaAxios.delete(`/api/tikets/tareas/${id}`, { params: { proyecto }});
             dispatch({
                 type: ELIMINAR_TAREA,
                 payload: id
             });
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error al eliminar la tarea",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 
     const actualizarTarea = async tarea => {
         try {
-            const resultado = await TareaAxios.put(`/api/tareas/${tarea._id}`, tarea);
+            const resultado = await TareaAxios.put(`/api/tikets/tareas/${tarea._id}`, tarea);
             
             dispatch({
                 type: ACTUALIZAR_TAREA,
                 payload: resultado.data.tarea
             });
         } catch (error) {
-            console.log(error)
+            const alerta = {
+                msg: "Hubo un error al actualizar la tarea",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: TAREA_ERROR,
+                payload: alerta
+            })
         }
     }
 

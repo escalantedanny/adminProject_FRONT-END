@@ -11,7 +11,9 @@ import {
             VALIDAR_FORMULARIO,
             PROYECTO_ACTUAL,
             ELIMINAR_PROYECTO,
-            PROYECTO_ERROR 
+            PROYECTO_ERROR,
+            OCULTAR_ACTUAL,
+            MOSTRAR_TODOS_PROYECTOS 
         } from '../../types';
 
 const ProyectoState = props => {
@@ -36,7 +38,7 @@ const ProyectoState = props => {
     //obtener los proyectos  con dispatch
     const obtenerProyectos = async () => {
         try {
-            const resultado = await ProyectoAxios.get('/api/proyectos');
+            const resultado = await ProyectoAxios.get('/api/tikets/proyectos');
 
             dispatch({
                 type: OBTENER_PROYECTOS,
@@ -60,7 +62,7 @@ const ProyectoState = props => {
 
         // funcion NECESARIA cuando elmanejador no tiene in ID proyecto.id = uuid.v4();
         try {
-            const respuesta = await ProyectoAxios.post('/api/proyectos', proyecto);
+            const respuesta = await ProyectoAxios.post('/api/tikets/proyectos', proyecto);
             
             //insertar proyecto en el state
             dispatch({
@@ -99,7 +101,7 @@ const ProyectoState = props => {
     const eliminaUnProyecto = async proyectoId => {
 
         try {
-            await ProyectoAxios.delete(`/api/proyectos/${proyectoId}`);
+            await ProyectoAxios.delete(`/api/tikets/proyectos/${proyectoId}`);
             dispatch({
                 type: ELIMINAR_PROYECTO,
                 payload: proyectoId
@@ -118,6 +120,34 @@ const ProyectoState = props => {
 
         
     }
+
+    const esconderFormulario = () => {
+        dispatch({
+            type: OCULTAR_ACTUAL
+        });
+    }
+
+    const obtenerProyectosAdmin =  async () => {
+
+        try {
+            const resultado = await ProyectoAxios.get('/api/tikets/proyectos/');
+
+            dispatch({
+                type: MOSTRAR_TODOS_PROYECTOS,
+                payload: resultado.data.proyectos
+            })
+        } catch (error) {
+            const alerta = {
+                msg: "Hubo un error",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: PROYECTO_ERROR,
+                payload: alerta
+            })
+        }
+    }
+
     return (
         <proyectoContext.Provider 
             value={{
@@ -131,7 +161,9 @@ const ProyectoState = props => {
                 agregarProyecto,
                 mostrarError,
                 mostrarProyecto,
-                eliminaUnProyecto
+                eliminaUnProyecto,
+                esconderFormulario,
+                obtenerProyectosAdmin
             }}
         >
             {props.children}

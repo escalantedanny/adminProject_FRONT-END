@@ -13,10 +13,30 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,900|Roboto:300,400,700&display=swap" rel="stylesheet">
-    <title>Plataforma de Tickets - Multiples plataformas</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Plataforma de Tickets - Administrador de Multiples tareas</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDj_Q4YxNwWYbErlfkIjfH3ntim2UZ8pWw",
+    authDomain: "ticketsoft-4bca7.firebaseapp.com",
+    databaseURL: "https://ticketsoft-4bca7.firebaseio.com",
+    projectId: "ticketsoft-4bca7",
+    storageBucket: "ticketsoft-4bca7.appspot.com",
+    messagingSenderId: "1074995607639",
+    appId: "1:1074995607639:web:590b078dd127f041e70b12"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
     <div id="root"></div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>

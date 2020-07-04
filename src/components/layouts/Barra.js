@@ -9,16 +9,20 @@ const Barra = () => {
 
     useEffect( () => {
         usuarioAutenticado();
+<<<<<<< HEAD
+=======
+        // eslint-disable-next-line
+>>>>>>> development
     }, [])
 
     const cerrarSesion = () => {
         cerrarSession();
     }
+    
 
     return ( 
         <header className="app-header">
-            { usuario && !cargando ? <p className="nombre-usuario">Hola <span>{usuario.nombre}</span></p> : '' }
-
+            { usuario && !cargando ? <p className="nombre-usuario">Hola <span>{usuario.nombre}</span></p> : '' }<br></br>
             <nav className="nav-principal">
                 <button className="btn btn-blank cerrar-sesion" onClick={cerrarSesion}>
                     Cerrar Sessión

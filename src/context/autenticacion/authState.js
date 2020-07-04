@@ -29,7 +29,7 @@ const AuthState = props => {
     const registrarUsuario = async datos => {
 
         try {
-            const respuesta = await clienteAxios.post('/api/usuarios', datos);
+            const respuesta = await clienteAxios.post('/api/tikets/usuarios', datos);
             dispatch({
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data
@@ -59,7 +59,8 @@ const AuthState = props => {
         }
         
         try {
-            const respuesta = await clienteAxios.get('/api/auth');
+            const respuesta = await clienteAxios.get('/api/tikets/auth');
+            
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.usuario
@@ -76,9 +77,8 @@ const AuthState = props => {
     // cuando el usuario inicia session
     const iniciarSession = async datos => {
         try {
-            const respuesta = await clienteAxios.post('/api/auth', datos);
-            //console.log(respuesta);
-            
+            const respuesta = await clienteAxios.post('/api/tikets/auth', datos);
+
             dispatch({
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
@@ -105,7 +105,16 @@ const AuthState = props => {
                 type: CERRAR_SESSION
             })
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data.msg);
+            const alerta = {
+                msg: error.response.data.msg,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: LOGIN_ERROR,
+                payload: alerta
+            })
         }
     }
 

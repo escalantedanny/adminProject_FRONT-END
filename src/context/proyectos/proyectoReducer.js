@@ -5,7 +5,9 @@ import {
     PROYECTO_ERROR, 
     VALIDAR_FORMULARIO,
     PROYECTO_ACTUAL,
-    ELIMINAR_PROYECTO
+    ELIMINAR_PROYECTO,
+    OCULTAR_ACTUAL,
+    MOSTRAR_TODOS_PROYECTOS
 } from '../../types';
 
 export default (state, action) => {
@@ -48,6 +50,16 @@ export default (state, action) => {
             return {
                 ...state,
                 mensaje: action.payload
+            }
+        case OCULTAR_ACTUAL:
+            return {
+                ...state,
+                formulario: false
+            }
+        case MOSTRAR_TODOS_PROYECTOS:
+            return {
+                ...state,
+                proyectos: action.payload
             }
         default: 
             return state;
